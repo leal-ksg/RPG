@@ -14,8 +14,7 @@
     "noEmit": true,
     // For nodejs:
     // "lib": ["esnext"],
-    "types": ["node"],
-    // and npm install -D @types/node
+    "types": ["node"], // node types are not installed in this workspace
     "esModuleInterop": true,
 
     // Other Outputs
