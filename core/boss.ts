@@ -7,6 +7,7 @@ export abstract class Boss {
   private _health: number;
   private _attackStrategy: AttackStrategy;
   private _distanceAdvantage: boolean = false;
+  private _isStunned: boolean = false;
 
   constructor(name: string, health: number, strategy: AttackStrategy) {
     this._name = name;
@@ -33,6 +34,8 @@ export abstract class Boss {
   public getHealth(): number { return this._health; }
   public hasDistanceAdvantage(): boolean { return this._distanceAdvantage; }
   public setDistanceAdvantage(advantage: boolean): void { this._distanceAdvantage = advantage; }
+  public isStunned(): boolean { return this._isStunned }
+  public setStunned(isStunned: boolean): void { this._isStunned = isStunned; }
 }
 
 export class FungalGolem extends Boss {

@@ -17,7 +17,6 @@ export class CliRenderer implements GameObserver {
       barColor = chalk.yellow;
     }
 
-    // Cria representação visual da vida
     const numBars = Math.max(0, Math.ceil(currentHealth / 20));
     healthBar = "█".repeat(Math.min(totalBars, numBars)) + "░".repeat(Math.max(0, totalBars - numBars));
 

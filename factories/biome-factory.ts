@@ -1,4 +1,4 @@
-import { Boss, FungalGolem, GiantGorilla } from "../app-manager.ts/boss.ts";
+import { Boss, FungalGolem, GiantGorilla } from "../core/boss.ts";
 
 export interface Biome {
   getName(): string;

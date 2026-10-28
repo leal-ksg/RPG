@@ -8,6 +8,8 @@ export abstract class Weapon {
   private _damagePoints: number;
   private _range: WeaponRange;
   private _name: string;
+  private _baseFireDamage: number = 2
+  private _currentFireDamage: number = 0;
 
   constructor(name: string, damage: number, range: WeaponRange) {
     this._damagePoints = damage;
@@ -25,6 +27,24 @@ export abstract class Weapon {
 
   public getName(): string {
     return this._name;
+  }
+
+  public getBaseFireDamage(): number {
+    return this._baseFireDamage;
+  }
+
+  public getCurrentFireDamage(): number {
+    return this._currentFireDamage;
+  }
+
+  public setFireDamage(): void {
+    this._currentFireDamage = 4;
+  }
+
+  public decreaseFireDamage(): void {
+    this._currentFireDamage = this._currentFireDamage - this._baseFireDamage;
+
+    if (this._currentFireDamage < 0) this._currentFireDamage = 0;
   }
 }
 

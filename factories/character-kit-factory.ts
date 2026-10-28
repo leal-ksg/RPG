@@ -4,7 +4,7 @@ import {
   MagicStaff,
   ShortDagger,
   Weapon,
-} from "../app-manager.ts/weapons.ts";
+} from "../core/weapons.ts";
 
 export interface CharacterKitFactory {
   createPrimaryWeapon(): Weapon;

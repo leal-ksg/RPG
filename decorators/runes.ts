@@ -1,4 +1,4 @@
-import { Weapon } from "../app-manager.ts/weapons.ts";
+import { Weapon } from "../core/weapons.ts";
 
 export abstract class RuneDecorator extends Weapon {
   protected _wrappedWeapon: Weapon;
@@ -19,7 +19,7 @@ export class FireRuneDecorator extends RuneDecorator {
   }
 }
 
-export class EletricRuneDecorator extends RuneDecorator {
+export class ElectricRuneDecorator extends RuneDecorator {
   constructor(weapon: Weapon) {
     super(weapon);
   }
