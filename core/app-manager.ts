@@ -88,6 +88,10 @@ export class AppManager {
       chalk.bold.yellow("    -> Como seu personagem vai se chamar? "),
     );
 
+    if (!name) {
+      name = "Jogador 1"
+    }
+  
     name = name.toUpperCase().trim();
 
     this.presentCharacterClasses();
