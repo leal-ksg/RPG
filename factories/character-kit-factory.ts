@@ -41,7 +41,7 @@ export class MageKitFactory implements CharacterKitFactory {
   }
 
   getBaseHealthPoints(): number {
-    return 120;
+    return 150;
   }
 
   getClassName(): string {

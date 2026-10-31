@@ -73,7 +73,7 @@ export class AppManager {
 
   ${chalk.bold.blue("🔮  [2] MAGO")}
   ------------------------------------------------------------------------
-  • ${chalk.bold("Vida Máxima:")}      ${chalk.yellow.bold("120 HP")}
+  • ${chalk.bold("Vida Máxima:")}      ${chalk.yellow.bold("150 HP")}
   • ${chalk.bold("Arma Primária:")}    ${chalk.blue("Cajado Mágico")} (Dano: 20 | Alcance: Longo)
   • ${chalk.bold("Arma Secundária:")}  ${chalk.blue("Adaga Curta")}   (Dano: 17 | Alcance: Curto)
 
@@ -270,7 +270,7 @@ export class AppManager {
       console.clear();
       this._notifier.notifyLog(
         chalk.bold.gray(
-          `\n─────────────────── RODADA ${round} ───────────────────`,
+          `\n   ──────────────────── RODADA ${round} ────────────────────`,
         ),
       );
 
@@ -281,14 +281,14 @@ export class AppManager {
       this._notifier.notifyHealthChanged(boss.getName(), boss.getHealth());
       this._notifier.notifyLog(
         chalk.bold.gray(
-          `───────────────────────────────────────────────────────\n`,
+          `──────────────────────────────────────────────────\n`,
         ),
       );
 
       if (this._player.isStunned()) {
         this._notifier.notifyLog(
           chalk.bold.magenta(
-            `${this._player.getName()} está paralisado e não poderá atacar nesse turno!`,
+            `${this._player.getName()} está paralisado e não poderá atacar nesse turno!\n`,
           ),
         );
         await sleep(800);

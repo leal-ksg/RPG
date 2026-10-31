@@ -1,4 +1,4 @@
-import { Weapon, WeaponRange } from "../core/weapons.ts";
+import { ShortDagger, Weapon, WeaponRange } from "../core/weapons.ts";
 import { Boss } from "../core/boss.ts";
 import { Player } from "../core/player.ts";
 import { GameEventNotifier } from "../observers/game-notifier-observer.ts";
@@ -24,6 +24,18 @@ export class PlayerAttackStrategy implements AttackStrategy {
       );
     } else {
       const chance = Math.random();
+
+      if (chance < 0.4) {
+        if (weapon instanceof ShortDagger) {
+          GameEventNotifier.getInstance().notifyLog(
+            chalk.bold.red(
+              `\n   A adaga curta acertou um golpe crítico em ${boss.getName()}, adicionando 15 de dano!\n`,
+            ),
+          );
+
+          damage = damage + 15;
+        }
+      }
 
       if (chance < 0.38) {
         if (weapon instanceof ElectricRuneDecorator) {
@@ -65,20 +77,16 @@ export class PlayerAttackStrategy implements AttackStrategy {
 
 export class SwampBossAttackStrategy implements AttackStrategy {
   execute(boss: Boss, player: Player): void {
-    let damage: number;
-    const chance = Math.random();  
+    const damage = 20;
+    const chance = Math.random();
 
     if (chance < 0.25) {
-      damage = 30;
-
       GameEventNotifier.getInstance().notifyLog(
         `🍄 ${chalk.bold.red("ATAQUE PESADO!")} Golem Fúngico dispara uma nuvem de esporos. ${player.getName()} recebe ${damage} de dano e fica atordoado!`,
       );
 
-      player.setStunned(true)
+      player.setStunned(true);
     } else {
-      damage = 20
-
       GameEventNotifier.getInstance().notifyLog(
         `🍄 Golem Fúngico golpeia o solo e ataca com raízes. ${player.getName()} recebe ${damage} de dano!`,
       );
@@ -94,7 +102,7 @@ export class MountainBossAttackStrategy implements AttackStrategy {
     let damage: number;
 
     if (chance < 0.25) {
-      damage = 30
+      damage = 30;
       GameEventNotifier.getInstance().notifyLog(
         `🦍 ${chalk.bold.red("ATAQUE PESADO!")} O Gorila Gigante arremessa ${player.getName()} para longe!\n` +
           `   Dano recebido: ${chalk.bold.red(damage + " HP")}.`,
@@ -108,7 +116,6 @@ export class MountainBossAttackStrategy implements AttackStrategy {
         `🦍 O Gorila Gigante desfere um soco leve em ${player.getName()}!\n` +
           `   Dano recebido: ${chalk.bold.yellow(damage + " HP")}.`,
       );
-
     }
 
     player.takeDamage(damage);
